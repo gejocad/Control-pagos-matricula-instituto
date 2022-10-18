@@ -181,7 +181,6 @@ if ($_SESSION['acceso']==1) {
             <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
             <li><a href="lugar.php"><i class="fa fa-circle-o"></i> Lugares</a></li>
             <li><a href="horario.php"><i class="fa fa-circle-o"></i> Horarios</a></li>
-            <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Precios</a></li>
           </ul>
         </li>';
 }

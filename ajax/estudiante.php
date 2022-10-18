@@ -73,7 +73,7 @@ switch ($_GET["op"]) {
 
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
-            "0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idestudiante.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->idestudiante.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idestudiante.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" onclick="activar('.$reg->idestudiante.')"><i class="fa fa-check"></i></button>',
+            "0"=>($reg->condicion=='1')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idestudiante.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->idestudiante.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idestudiante.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" onclick="activar('.$reg->idestudiante.')"><i class="fa fa-check"></i></button>',
             "1"=>$reg->nombre,
             "2"=>$reg->apellido,
             "3"=>$reg->fecha_nacimiento,
@@ -81,7 +81,7 @@ switch ($_GET["op"]) {
 			"5"=>$reg->numero_documento,
             "6"=>$reg->telefono,
             "7"=>$reg->correo,
-			"8"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+			"8"=>($reg->condicion=='1')?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
 			
               );
 		}
