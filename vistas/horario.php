@@ -54,7 +54,7 @@ if ($_SESSION['acceso']==1) {
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Hora de entrada(*):</label>
-      <input class="form-control" type="time" name="hora_entrada" id="hora_entrada" required></select>
+      <input class="form-control" type="time" name="hora_entrada" id="hora_entrada" required>
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Hora de salida(*):</label>

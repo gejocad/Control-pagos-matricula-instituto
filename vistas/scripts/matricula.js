@@ -32,8 +32,11 @@ function limpiar(){
 
 	$("#idmatricula").val("");
 	$("#estudiante").val("");
+	$("#idestudiante").val("");
 	$("#programa").val("");
+	$("#idprograma").val("");
 	$("#horario").val("");
+	$("#idhorario").val("");
 	$("#precio_mes").val("");
 
 }
@@ -129,6 +132,7 @@ function mostrar(idmatricula){
 			$("#jornada").selectpicker('refresh');
 			$("#precio_mes").val(data.precio_mes);
 			$("#precio_mes").selectpicker('refresh');
+			$("#idmatricula").val(data.idmatricula);
 
 			//ocultar y mostrar los botones
 			$("#btnCancelar").show();

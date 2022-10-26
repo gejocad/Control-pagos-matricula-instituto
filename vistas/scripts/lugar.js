@@ -99,7 +99,9 @@ function mostrar(idlugar){
 			mostrarform(true);
 
 
-			$("#nombre").val(data.nombre);
+			$("#municipio").val(data.municipio);
+			$("#departamento").val(data.departamento);
+			$("#idlugar").val(data.idlugar);
 			
 		})
 }

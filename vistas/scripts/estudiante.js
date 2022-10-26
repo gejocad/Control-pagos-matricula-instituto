@@ -120,13 +120,6 @@ function guardaryeditar(e){
      limpiar();
 }
 
-function prueba1(){
-
-	let prueba 
-
-	prueba = setTimeout(mostrarform(), 5000)
-}
-
 
 
 function mostrar(idestudiante){
@@ -161,6 +154,7 @@ function mostrar(idestudiante){
 			$("#imagenmuestra3").show();
 			$("#imagenmuestra3").attr("src","../files/estudiantes/"+data.numero_documento+"_documento_lado2.jpg");
 			$("#imagenactual3").val(data.numero_documento+"_documento_lado2.jpg");
+			$("#idestudiante").val(data.idestudiante);
 			
 		})
 }

@@ -10,14 +10,14 @@ public function __construct(){
 }
 
 //metodo insertar regiustro
-public function insertar($nombre){
-	$sql="INSERT INTO lugar (nombre,condicion)
+public function insertar($municipio,$departamento){
+	$sql="INSERT INTO lugar (municipio,departamento,condicion)
 	 VALUES ('$nombre','1')";
 	return ejecutarConsulta($sql);
 }
 
-public function editar($nombre){
-	$sql="UPDATE lugar SET nombre='$nombre'
+public function editar($idlugar,$municipio,$departamento){
+	$sql="UPDATE lugar SET municipio='$municipio',departamento='$departamento'
 	WHERE idlugar='$idlugar'";
 	return ejecutarConsulta($sql);
 }

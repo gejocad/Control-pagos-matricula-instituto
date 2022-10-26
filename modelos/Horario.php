@@ -16,7 +16,7 @@ public function insertar($jornada,$hora_entrada,$hora_salida){
 	return ejecutarConsulta($sql);
 }
 
-public function editar($jornada,$hora_entrada,$hora_salida){
+public function editar($idhorario,$jornada,$hora_entrada,$hora_salida){
 	$sql="UPDATE horario SET jornada='$jornada',hora_entrada='$hora_entrada',hora_salida='$hora_salida'
 	WHERE idhorario='$idhorario'";
 	return ejecutarConsulta($sql);

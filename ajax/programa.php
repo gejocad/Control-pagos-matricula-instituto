@@ -70,7 +70,7 @@ switch ($_GET["op"]) {
 			require_once "../modelos/Programa.php";
 			$Programa = new Programa();
 
-			$rspta = $programa->listar();
+			$rspta = $programa->listarp();
 
 			while ($reg = $rspta->fetch_object()) {
 				echo '<option value='.$reg->idprograma.'>'.$reg->nombre.'</option>';

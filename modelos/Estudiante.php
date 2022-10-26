@@ -16,8 +16,8 @@ public function insertar($nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$
 	return ejecutarConsulta($sql);
 }
 
-public function editar($nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente){
-	$sql="UPDATE estudiante SET idcategoria='$idcategoria',codigo='$codigo', nombre='$nombre',stock='$stock',ing1='$ing1',cant1='$cant1',ing2='$ing2',cant2='$cant2',ing3='$ing3',cant3='$cant3',ing4='$ing4',cant4='$cant4',ing5='$ing5',cant5='$cant5',ing6='$ing6',cant6='$cant6',ing7='$ing7',cant7='$cant7',descripcion='$descripcion',imagen='$imagen' 
+public function editar($idestudiante,$nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente){
+	$sql="UPDATE estudiante SET nombre='$nombre',apellido='$apellido',fecha_nacimiento='$fecha_nacimiento',lugar_nacimiento='$lugar_nacimiento',tipo_documento='$tipo_documento',numero_documento='$numero_documento',fecha_expedicion='$fecha_expedicion',lugar_expedicion='$lugar_expedicion',direccion_residencia='$direccion_residencia',telefono='$telefono',correo='$correo',sangre='$sangre',acudiente='$acudiente',telefono_acudiente='$telefono_acudiente' 
 	WHERE idestudiante='$idestudiante'";
 	return ejecutarConsulta($sql);
 }

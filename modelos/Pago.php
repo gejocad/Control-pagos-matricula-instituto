@@ -17,7 +17,7 @@ public function insertar($matricula,$idusuario,$tipo_pago,$total_pago,$observaci
 
 
 public function anular($idpago){
-	$sql="UPDATE pago SET estado='Anulado' WHERE idpago='$idpago'";
+	$sql="UPDATE pago SET estado='0' WHERE idpago='$idpago'";
 	return ejecutarConsulta($sql);
 }
 

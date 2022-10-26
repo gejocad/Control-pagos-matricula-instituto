@@ -14,7 +14,7 @@ public function insertar($estudiante,$programa,$horario,$precio_mes){
 	$sql="INSERT INTO matricula (idestudiante,idprograma,idhorario,precio_mes,condicion) VALUES ('$estudiante','$programa','$horario','$precio_mes','1')";
 	return ejecutarConsulta($sql);
 }
-public function editar($estudiante,$programa,$horario,$precio_mes){
+public function editar($idmatricula,$estudiante,$programa,$horario,$precio_mes){
 	$sql="UPDATE matricula SET idestudiante='$estudiante',idprograma='$programa',idhorario='$horario',precio_mes='$precio_mes',condicion='1'
 	WHERE idmatricula='$idmatricula'";
 	return ejecutarConsulta($sql);

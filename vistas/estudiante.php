@@ -61,7 +61,7 @@ if ($_SESSION['estudiante']==1) {
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Apellidos(*):</label>
-      <input class="form-control" type="text" name="apellido" id="apellido" maxlength="40" placeholder="Nombres" required></select>
+      <input class="form-control" type="text" name="apellido" id="apellido" maxlength="40" placeholder="Apellidos" required></select>
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Fecha de nacimiento(*):</label>
@@ -109,7 +109,7 @@ if ($_SESSION['estudiante']==1) {
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Correo Electronico:</label>
-      <input class="form-control" type="text" name="correo" id="correo" maxlength="40" placeholder="Correo Electronico" required>
+      <input class="form-control" type="text" name="correo" id="correo" maxlength="40" placeholder="Correo Electronico">
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Tipo de sangre:</label>
@@ -117,11 +117,11 @@ if ($_SESSION['estudiante']==1) {
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Nombre de un acudiente</label>
-      <input class="form-control" type="text" name="acudiente" id="acudiente" maxlength="50" placeholder="Nombre de un acudiente" required>
+      <input class="form-control" type="text" name="acudiente" id="acudiente" maxlength="50" placeholder="Nombre de un acudiente">
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Telefono del acudiente:</label>
-      <input class="form-control" type="text" name="telefono_acudiente" id="telefono_acudiente" maxlength="11" placeholder="Telefono del acudiente" required>
+      <input class="form-control" type="text" name="telefono_acudiente" id="telefono_acudiente" maxlength="11" placeholder="Telefono del acudiente">
     </div>
     <div class="form-group col-lg-12 col-md-12 col-xs-12">
       <label for="">Foto del estudiante:</label>

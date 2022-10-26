@@ -73,6 +73,9 @@ switch ($_GET["op"]) {
     case 'listar':
 		$rspta=$matricula->listar();
 		$data=Array();
+		
+
+		
 
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
@@ -81,7 +84,7 @@ switch ($_GET["op"]) {
             "2"=>$reg->programa,
             "3"=>$reg->jornada,
             "4"=>$reg->fecha_registro,
-            "5"=>$reg->pagado,
+            "5"=>number_format($reg->pagado, 0, ',', '.'),
             "6"=>number_format(($reg->semestre*6)*($reg->precio_mes), 0, ',', '.'),
             "7"=>($reg->condicion=='1')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
               );

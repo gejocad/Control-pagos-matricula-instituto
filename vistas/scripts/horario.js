@@ -109,6 +109,7 @@ function mostrar(idhorario){
 			$("#jornada").val(data.jornada);
 			$("#hora_entrada").val(data.hora_entrada);
 			$("#hora_salida").val(data.hora_salida);
+			$("#idhorario").val(data.idhorario);
 			
 		})
 }

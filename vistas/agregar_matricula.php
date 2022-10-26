@@ -25,7 +25,7 @@ if ($_SESSION['matricula']==1) {
 </div>
 <!--box-header-->
 <!--centro-->
-<div class="panel-body table-responsive" id="listadoregistros">
+<div class="panel-body table-responsive" id="listadoregistros" style="height: 100vh;">
   <form action="" name="formulario" id="formulario" method="POST">
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Estudiante(*):</label>

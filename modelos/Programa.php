@@ -16,7 +16,7 @@ public function insertar($nombre,$resolucion,$licencia,$fecha_expedicion,$fecha_
 	return ejecutarConsulta($sql);
 }
 
-public function editar($nombre,$resolucion,$licencia,$fecha_expedicion,$fecha_vencimiento,$codigo,$semestre,$decreto){
+public function editar($idprograma,$nombre,$resolucion,$licencia,$fecha_expedicion,$fecha_vencimiento,$codigo,$semestre,$decreto){
 	$sql="UPDATE programa SET nombre='$nombre',resolucion='$resolucion',licencia='$licencia',fecha_expedicion='$fecha_expedicion',fecha_vencimiento='$fecha_vencimiento',codigo='$codigo',semestre='$semestre',decreto='$decreto' 
 	WHERE idprograma='$idprograma'";
 	return ejecutarConsulta($sql);
@@ -44,7 +44,7 @@ public function select(){
 
 //listar registros 
 public function listar(){
-	$sql="SELECT idprograma,nombre,resolucion,fecha_expedicion,fecha_vencimiento,codigo,semestre,condicion FROM programa ORDER BY idprograma DESC";
+	$sql="SELECT idprograma,nombre,resolucion,fecha_expedicion,fecha_vencimiento,codigo,semestre,condicion FROM programa ORDER BY fecha_vencimiento DESC";
 	return ejecutarConsulta($sql);
 }
 
@@ -54,7 +54,7 @@ public function listarActivos(){
 	return ejecutarConsulta($sql);
 }
 public function listarp(){
-	$sql="SELECT * FROM programa";
+	$sql="SELECT * FROM programa WHERE condicion=1";
 	return ejecutarConsulta($sql);
 }
 }

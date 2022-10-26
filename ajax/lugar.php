@@ -4,17 +4,18 @@ require_once "../modelos/Lugar.php";
 $lugar=new Lugar();
 
 $idlugar=isset($_POST["idlugar"])? limpiarCadena($_POST["idlugar"]):"";
-$nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
+$municipio=isset($_POST["municipio"])? limpiarCadena($_POST["municipio"]):"";
+$departamento=isset($_POST["departamento"])? limpiarCadena($_POST["departamento"]):"";
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 
 	if (empty($idlugar)) {
 
-		$rspta=$lugar->insertar($nombre);
+		$rspta=$lugar->insertar($municipio,$departamento);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}else{
-         $rspta=$lugar->editar($idlugar,$nombre);
+         $rspta=$lugar->editar($idlugar,$municipio,$departamento);
 		echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos";
 	}
 		break;
@@ -41,8 +42,9 @@ switch ($_GET["op"]) {
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
             "0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idlugar.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->idlugar.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idlugar.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" onclick="activar('.$reg->idlugar.')"><i class="fa fa-check"></i></button>',
-            "1"=>$reg->nombre,
-			"2"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+            "1"=>$reg->municipio,
+            "2"=>$reg->departamento,
+			"3"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
 			
               );
 		}
@@ -61,7 +63,7 @@ switch ($_GET["op"]) {
 			$rspta = $lugar->listar();
 
 			while ($reg = $rspta->fetch_object()) {
-				echo '<option value='.$reg->idlugar.'>'.$reg->nombre.'</option>';
+				echo '<option value='.$reg->idlugar.'>'.$reg->municipio.' - '.$reg->departamento.'</option>';
 			}
 			break;
 

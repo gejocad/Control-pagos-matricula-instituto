@@ -28,14 +28,16 @@ if ($_SESSION['acceso']==1) {
   <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
     <thead>
       <th>Opciones</th>
-      <th>Nombre</th>
+      <th>Municipio</th>
+      <th>Departamento</th>
       <th>Estado</th>
     </thead>
     <tbody>
     </tbody>
     <tfoot>
       <th>Opciones</th>
-      <th>Nombre</th>
+      <th>Municipio</th>
+      <th>Departamento</th>
       <th>Estado</th>
     </tfoot>   
   </table>
@@ -44,11 +46,14 @@ if ($_SESSION['acceso']==1) {
   <div class="panel-body table-responsive" id="listadoregistros">
   <form action="" name="formulario" id="formulario" method="POST">
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
-      <label for="">Nombre del lugar(*):</label>
+      <label for="">Municipio(*):</label>
       <input class="form-control" type="hidden" name="idlugar" id="idlugar">
-      <input class="form-control" type="text" name="nombre" id="nombre" maxlength="80" placeholder="Nombre" required>
+      <input class="form-control" type="text" name="municipio" id="municipio" maxlength="40" placeholder="Municipio" required>
     </div>
-    
+    <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      <label for="">Departamento(*):</label>
+      <input class="form-control" type="text" name="departamento" id="departamento" maxlength="40" placeholder="Departamento" required>
+    </div>
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
 

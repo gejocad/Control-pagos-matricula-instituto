@@ -120,6 +120,7 @@ function mostrar(idprograma){
 			$("#codigo").val(data.codigo);
 			$("#semestre").val(data.semestre);
 			$("#decreto").val(data.decreto);
+			$("#idprograma").val(data.idprograma);
 			
 		})
 }
