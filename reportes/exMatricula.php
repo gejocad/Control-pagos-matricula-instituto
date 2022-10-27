@@ -79,7 +79,7 @@ if ($reg->pagado == $reg->precio_mes && $reg->pagado < ($reg->precio_mes*2)) {
 } elseif ($reg->pagado >= ($reg->precio_mes*17) && $reg->pagado < ($reg->precio_mes*18)) {
     $cuota= "Cuota 16";
 } elseif ($reg->pagado >= ($reg->precio_mes*18)) {
-    $cuota= "Cuota 17";
+    $cuota= "Derecho de grado";
 } else {
     $cuota= "Cuota No Valida";
 }
@@ -89,7 +89,7 @@ if ($reg->pagado == $reg->precio_mes && $reg->pagado < ($reg->precio_mes*2)) {
 <div class="zona_impresion">
 	<!--codigo imprimir-->
 	<br>
-	<table border="0" align="center" width="1240px">
+	<table border="0" align="center" width="240px">
 		<tr>
 			<td align="center">
 				<!--mostramos los datos de la empresa en el doc HTML-->
