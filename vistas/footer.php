@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2022 Instituto La Frontera</a>.</strong> Todo los derechos.
+    <strong>Copyright &copy; 2022 Instituto La Frontera.</strong> Todo los derechos.
     reservados.
   </footer>
 
