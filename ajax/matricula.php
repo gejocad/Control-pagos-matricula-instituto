@@ -10,15 +10,20 @@ $estudiante=isset($_POST["estudiante"])? limpiarCadena($_POST["estudiante"]):"";
 $programa=isset($_POST["programa"])? limpiarCadena($_POST["programa"]):"";
 $horario=isset($_POST["horario"])? limpiarCadena($_POST["horario"]):"";
 $precio_mes=isset($_POST["precio_mes"])? limpiarCadena($_POST["precio_mes"]):"";
+$diploma_bachiller=isset($_POST["diploma_bachiller"])? limpiarCadena($_POST["diploma_bachiller"]):"";
+$certificado_9=isset($_POST["certificado_9"])? limpiarCadena($_POST["certificado_9"]):"";
+$fotocopia_identificacion=isset($_POST["fotocopia_identificacion"])? limpiarCadena($_POST["fotocopia_identificacion"]):"";
+$fotocopia_registro_civil=isset($_POST["fotocopia_registro_civil"])? limpiarCadena($_POST["fotocopia_registro_civil"]):"";
+$carpeta=isset($_POST["carpeta"])? limpiarCadena($_POST["carpeta"]):"";
 
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 	if (empty($idmatricula)) {
-		$rspta=$matricula->insertar($estudiante,$programa,$horario,$precio_mes);
+		$rspta=$matricula->insertar($estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}else{
-        $rspta=$matricula->editar($idmatricula,$estudiante,$programa,$horario,$precio_mes);
+        $rspta=$matricula->editar($idmatricula,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}
 		break;
@@ -34,52 +39,14 @@ switch ($_GET["op"]) {
 		echo json_encode($rspta);
 		break;
 
-	case 'listarDetalle':
-		//recibimos el idmatricula
-		$id=$_GET['id'];
-
-		$rspta=$matricula->listarDetalle($id);
-		$total=0;
-		echo ' <thead style="background-color:#A9D0F5">
-        <th>Opciones</th>
-        <th>Articulo</th>
-        <th>Cantidad</th>
-        <th>Precio Compra</th>
-        <th>Precio Venta</th>
-        <th>Subtotal</th>
-       </thead>';
-		while ($reg=$rspta->fetch_object()) {
-			echo '<tr class="filas">
-			<td></td>
-			<td>'.$reg->nombre.'</td>
-			<td>'.$reg->cantidad.'</td>
-			<td>'.$reg->precio_compra.'</td>
-			<td>'.$reg->precio_venta.'</td>
-			<td>'.$reg->precio_compra*$reg->cantidad.'</td>
-			<td></td>
-			</tr>';
-			$total=$total+($reg->precio_compra*$reg->cantidad);
-		}
-		echo '<tfoot>
-         <th>TOTAL</th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th><h4 id="total">$ '.$total.'</h4><input type="hidden" name="total_compra" id="total_compra"></th>
-       </tfoot>';
-		break;
-
     case 'listar':
 		$rspta=$matricula->listar();
 		$data=Array();
-		
-
-		
-
+		$url='../reportes/exMatricula.php?id=';
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
-            "0"=>($reg->condicion=='1')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idmatricula.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idmatricula.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idmatricula.')"><i class="fa fa-eye"></i></button>',
+            "0"=>(($reg->condicion=='1')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idmatricula.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idmatricula.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idmatricula.')"><i class="fa fa-eye"></i></button>').
+            '<a target="_blank" href="'.$url.$reg->idmatricula.'"> <button class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a>',
             "1"=>$reg->nombre,
             "2"=>$reg->programa,
             "3"=>$reg->jornada,

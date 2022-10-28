@@ -19,6 +19,7 @@ $correo=isset($_POST["correo"])? limpiarCadena($_POST["correo"]):"";
 $sangre=isset($_POST["sangre"])? limpiarCadena($_POST["sangre"]):"";
 $acudiente=isset($_POST["acudiente"])? limpiarCadena($_POST["acudiente"]):"";
 $telefono_acudiente=isset($_POST["telefono_acudiente"])? limpiarCadena($_POST["telefono_acudiente"]):"";
+$observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):"";
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
@@ -44,10 +45,10 @@ switch ($_GET["op"]) {
 
 	if (empty($idestudiante)) {
 
-		$rspta=$estudiante->insertar($nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente);
+		$rspta=$estudiante->insertar($nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente,$observacion);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}else{
-         $rspta=$estudiante->editar($idestudiante,$nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente);
+         $rspta=$estudiante->editar($idestudiante,$nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente,$observacion);
 		echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos";
 	}
 		break;

@@ -124,6 +124,10 @@ if ($_SESSION['estudiante']==1) {
       <input class="form-control" type="text" name="telefono_acudiente" id="telefono_acudiente" maxlength="11" placeholder="Telefono del acudiente">
     </div>
     <div class="form-group col-lg-12 col-md-12 col-xs-12">
+      <label for="">Observacion:</label>
+      <input class="form-control" type="text" name="observacion" id="observacion" maxlength="150" placeholder="Observacion">
+    </div>
+    <div class="form-group col-lg-12 col-md-12 col-xs-12">
       <label for="">Foto del estudiante:</label>
       <input class="form-control" type="file" name="imagen_estudiante" id="imagen_estudiante">
       <input type="hidden" name="imagenactual1" id="imagenactual1">

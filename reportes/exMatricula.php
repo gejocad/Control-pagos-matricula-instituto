@@ -8,7 +8,7 @@ if (!isset($_SESSION['nombre'])) {
   echo "debe ingresar al sistema correctamente para vosualizar el reporte";
 }else{
 
-if ($_SESSION['ventas']==1) {
+if ($_SESSION['matricula']==1) {
 
 ?>
 
@@ -16,11 +16,12 @@ if ($_SESSION['ventas']==1) {
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body onload="window.print();">
 	<?php 
 // incluimos la clase pago
-require_once "../modelos/Pago.php";
+require_once "../modelos/Matricula.php";
 
 
 //incluimos el archivo factura
@@ -30,177 +31,269 @@ require_once "../modelos/Pago.php";
 $logo="logo.png";
 $ext_logo="png";
 $empresa = "INSTITUTO LA FRONTERA";
-$documento = "NIT 102.237.7406-6";
-$direccion = "Cll. 17 Nro. 23-56, Santa teresita. Arauca-Arauca";
-$telefono = "+57 (315) 217 04 68";
+$eslogan = "Instituto para el trabajo y desarrollo humano.";
+$subtitulo_1 = "Licencia de funcionamiento N° 0083 del 2008 S.E.D.A.";
+$ciudad = "810001, Arauca, Arauca, CO.";
 $email = "direccion@institutolafrontera.co";
 
-$pago = new Pago();
+$matricula = new Matricula();
 
 //en el objeto $rspta obtenemos los valores devueltos del metodo ventacabecera del modelo
-$rspta = $pago->pagocabecera($_GET["id"]);
+$rspta = $matricula->imprimirMatricula($_GET["id"]);
 
 $reg=$rspta->fetch_object();
 
-$cuota= "Cuota 0";
-
-if ($reg->pagado == $reg->precio_mes && $reg->pagado < ($reg->precio_mes*2)) {
-    $cuota= "Matricula";
-} elseif ($reg->pagado >= ($reg->precio_mes*2) && $reg->pagado < ($reg->precio_mes*3)) {
-    $cuota= "Cuota 1";
-} elseif ($reg->pagado >= ($reg->precio_mes*3) && $reg->pagado < ($reg->precio_mes*4)) {
-    $cuota= "Cuota 2";
-} elseif ($reg->pagado >= ($reg->precio_mes*4) && $reg->pagado < ($reg->precio_mes*5)) {
-    $cuota= "Cuota 3";
-} elseif ($reg->pagado >= ($reg->precio_mes*5) && $reg->pagado < ($reg->precio_mes*6)) {
-    $cuota= "Cuota 4";
-} elseif ($reg->pagado >= ($reg->precio_mes*6) && $reg->pagado < ($reg->precio_mes*7)) {
-    $cuota= "Cuota 5";
-} elseif ($reg->pagado >= ($reg->precio_mes*7) && $reg->pagado < ($reg->precio_mes*8)) {
-    $cuota= "Cuota 6";
-} elseif ($reg->pagado >= ($reg->precio_mes*8) && $reg->pagado < ($reg->precio_mes*9)) {
-    $cuota= "Cuota 7";
-} elseif ($reg->pagado >= ($reg->precio_mes*9) && $reg->pagado < ($reg->precio_mes*10)) {
-    $cuota= "Cuota 8";
-} elseif ($reg->pagado >= ($reg->precio_mes*10) && $reg->pagado < ($reg->precio_mes*11)) {
-    $cuota= "Cuota 9";
-} elseif ($reg->pagado >= ($reg->precio_mes*11) && $reg->pagado < ($reg->precio_mes*12)) {
-    $cuota= "Cuota 10";
-} elseif ($reg->pagado >= ($reg->precio_mes*12) && $reg->pagado < ($reg->precio_mes*13)) {
-    $cuota= "Cuota 11";
-} elseif ($reg->pagado >= ($reg->precio_mes*13) && $reg->pagado < ($reg->precio_mes*14)) {
-    $cuota= "Cuota 12";
-} elseif ($reg->pagado >= ($reg->precio_mes*14) && $reg->pagado < ($reg->precio_mes*15)) {
-    $cuota= "Cuota 13";
-} elseif ($reg->pagado >= ($reg->precio_mes*15) && $reg->pagado < ($reg->precio_mes*16)) {
-    $cuota= "Cuota 14";
-} elseif ($reg->pagado >= ($reg->precio_mes*16) && $reg->pagado < ($reg->precio_mes*17)) {
-    $cuota= "Cuota 15";
-} elseif ($reg->pagado >= ($reg->precio_mes*17) && $reg->pagado < ($reg->precio_mes*18)) {
-    $cuota= "Cuota 16";
-} elseif ($reg->pagado >= ($reg->precio_mes*18)) {
-    $cuota= "Derecho de grado";
-} else {
-    $cuota= "Cuota No Valida";
-}
 
 	 ?>
 <FONT FACE="Arial">
 <div class="zona_impresion">
 	<!--codigo imprimir-->
 	<br>
-	<table border="0" align="center" width="240px">
-		<tr>
-			<td align="center">
-				<!--mostramos los datos de la empresa en el doc HTML-->
-				<img src="logo.png" width="220" height="200"/><p>
-				.::<strong> <?php echo $empresa; ?></strong>::.<br>
-				<?php echo $documento; ?><br>
-				<?php echo $direccion; ?><br>
-				<?php echo $telefono; ?><br>
-				<?php echo $email; ?><br>
-			</td>
-		</tr>
-		<tr>
-			<td align="center">Fecha: <?php echo $reg->fecha; ?></td>
-		</tr>
-		<tr> 
-			<td align="center"></td>
-		</tr>
-		<tr> 
-			<td align="center">RECIBO</td>
-		</tr>
-		<tr> 
-			<td align="center"></td>
-		</tr>
-		<tr>
-			<!--mostramos los datos del cliente -->
-			<td>Nombre: <?php echo $reg->nombre; ?>
-			</td>
-		</tr>
-			<!--mostramos los datos del cliente -->
-			<td>Apellido: <?php echo $reg->apellido; ?>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<?php echo $reg->tipo_documento.": ".number_format($reg->numero_documento); ?>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Programa matriculado: <?php echo $reg->programa; ?>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				N° de Comprobante: F-0<?php echo $reg->idpago; ?>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Usuario: <?php echo $reg->usuario; ?>
-			</td>
-		</tr>
-	</table>
-	<!--mostramos lod detalles de la venta -->
-
-	<table border="0" align="center" width="210px">
-		<tr>
-			<td colspan="3">===========================</td>
-		</tr>
-		<?php
-		$rsptad = $pago->pagodetalles($_GET["id"]);
-		$regd = $rsptad->fetch_object()
-		 ?>
-		 <!--mostramos los totales de la venta-->
-		<tr>
-			<td align=""><b>TOTAL PAGO:</b></td>
-			<td align=""><b>$ <?php echo number_format($regd->pago, 0, ',', ' '); ?></b></td>
-		</tr>
-		<tr>
-			<td align=""><b>Cuota al dia:</b></td>
-			<td align=""><b><?php echo $cuota; ?></b></td>
-		</tr>
-		<tr>
-			<td colspan="3">Tipo de pago: <?php echo $regd->tipo_pago; ?> </td>
-		</tr>
-		<tr>
-			<td colspan="3">Observacion: <?php echo $regd->observacion; ?> </td>
-		</tr>
-		<tr>
-			<td colspan="3">&nbsp;</td>
-		</tr>
-	</table>
-	<table border="0" align="center" width="200px">
-		<tr>
-			<td colspan="3" align="center"></td>
-		</tr>
-		<tr>
-		<tr>
-			<td colspan="3" align="center"></td>
-		</tr>
-		<tr>
-			<td>
-				Usted ha pagado hasta el momento: <b>$ <?php echo number_format($reg->pagado, 0, ',', ' '); ?></b>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				De un total de: <b>$ <?php echo number_format($reg->precio_mes*($reg->semestre*6), 0, ',', ' '); ?></b>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3" align="center">¡Gracias por su pago!</td>
-		</tr>
-		<tr>
-			<td colspan="3" align="center">Para cualquier cambio o garantia es indispensable presentar este recibo.</td>
-		</tr>
-	</table>
+	<div class="border" style="">
+  <div class="">
+  	<img class="fixed-top ml-5" src="logo.png" width="200" height="200" style="top:35px"/>
+  	<img class="position-fixed mr-5" src="foto.jpeg" width="200" height="200" style="top:30px; right: 0px;"/>
+  	<h1 class="text-center mt-5"><?php echo $empresa; ?></h1>
+  	<h6 class="text-center"><?php echo $eslogan; ?></h6>
+  	<h6 class="text-center"><?php echo $subtitulo_1; ?></h6>
+  	<br>
+  	<h4 class="text-center">HOJA DE MATRICULA</h4>
+  	<br>
+  <div class="row justify-content-center" style="margin-right: -130px;margin-left:-130px">
+    <div class="col-2 border">
+          Numero:
+    </div>
+    <div class="col-4 border">
+      Fecha de matricula:
+    </div>
+    <div class="col-4 border">
+      Ciudad:
+    </div>
+  </div>
+  <div class="row justify-content-center" style="margin-right: -130px;margin-left:-130px">
+    <div class="col-2 border pt-2 pb-2">
+        <?php echo $reg->idmatricula; ?>       
+    </div>
+    <div class="col-4 border pt-2 pb-2">
+      	<?php echo $reg->fecha_registro; ?>  
+    </div>
+    <div class="col-4 border pt-2 pb-2">
+      	<?php echo $ciudad; ?>
+    </div>
+  </div>
+  </br> 
+  <h4 class="text-center">Datos personales</h4>
+  </br> 
+  <div class="row justify-content-center">
+    <div class="col-3 border">
+           Nombres:
+    </div>
+    <div class="col-3 border">
+      Apellidos:
+    </div>
+    <div class="col-3 border">
+      Fecha de nacimiento:
+    </div>
+    <div class="col-3 border">
+      Ciudad de nacimiento:
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-3 border pt-2 pb-2">
+        </br>    
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+      
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+   
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+      
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-1 border">
+      Tipo doc:
+    </div>
+    <div class="col-3 border">
+      Numero de documento:
+    </div>
+    <div class="col-4 border">
+      Fecha de expedicion:
+    </div>
+    <div class="col-4 border">
+      Ciudad de expedicion:
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-1 border pt-2 pb-2">
+     		</br>   
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+     
+    </div>
+    <div class="col-4 border pt-2 pb-2">
+     
+    </div>
+    <div class="col-4 border pt-2 pb-2">
+    
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6 border">
+      Direccion:
+    </div>
+    <div class="col-2 border">
+      Telefono: 
+    </div>
+    <div class="col-3 border">
+      Correo:
+    </div>
+    <div class="col-1 border">
+      RH: O+
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6 border pt-2 pb-2">
+      </br> 
+    </div>
+    <div class="col-2 border pt-2 pb-2">
+     
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+      
+    </div>
+    <div class="col-1 border pt-2 pb-2">
+      
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-3 border">
+      Acudiente:
+    </div>
+    <div class="col-2 border">
+      Telefono: 
+    </div>
+    <div class="col-7 border">
+      Observacion: 
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-3 border pt-2 pb-2">
+      </br> 
+    </div>
+    <div class="col-2 border pt-2 pb-2">
+    </div>
+    <div class="col-7 border pt-2 pb-2">
+    </div>
+  </div>
+  <div class="row justify-content-right">
+    <div class="col-2 border">
+      Jornada:
+    </div>
+    <div class="col-3 border">
+      Horario: 
+    </div>
+    <div class="col-7 border">
+      Programa:
+    </div>
+  </div>
+  <div class="row justify-content-right">
+    <div class="col-2 border pt-2 pb-2">
+    	</br>
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+    </div>
+    <div class="col-7 border pt-2 pb-2">
+      Técnico laboral por competencias en AUXILIAR CONTABLE Y FINANCIERO
+    </div>
+  </div>
+  </br> 
+  <h4 class="text-center">Requisitos de matricula</h4>
+  </br> 
+  <div class="row justify-content-center">
+    <div class="col-2 border">
+      Diploma Bachiller:
+    </div>
+    <div class="col-2 border">
+      Certificado de 9:
+    </div>
+    <div class="col-3 border">
+      Fotocopia de identificacion:
+    </div>
+    <div class="col-3 border">
+      Fotocopia de registro civil:
+    </div>
+    <div class="col-2 border">
+      Carpeta:
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-2 border pt-2 pb-2">
+    </br>
+    </div>
+    <div class="col-2 border pt-2 pb-2">
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+    </div>
+    <div class="col-3 border pt-2 pb-2">
+    </div>
+    <div class="col-2 border pt-2 pb-2">
+    </div>
+  </div>
+  </br> 
+  <h4 class="text-center">Documento de identidad</h4>
+  </br> 
+  <div class="row justify-content-around">
+    <div class="col-5 border pt-2 pb-2" style="height: 300px;">
+    </div>
+    <div class="col-5 border pt-2 pb-2" style="height: 300px;">
+  </div>
+</div>
+<div class="row justify-content-around text-center">
+    <div class="col-5">
+    	Parte frontal
+    </div>
+    <div class="col-5">
+    	Parte trasera
+    </div>
+</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-around">
+    <div class="col-3 border-bottom pt-4 pb-4">
+          
+          </br>
+    </div>
+    <div class="col-3 border-bottom pt-4 pb-4">
+      
+    </div>
+    <div class="col-3 border-bottom pt-4 pb-4">
+      
+    </div>
+  </div>
+  <div class="row justify-content-around text-center">
+    <div class="col-3">
+       FIRMA ESTUDIANTE
+    </div>
+    <div class="col-3">
+       FIRMA SECRETARIO
+    </div>
+    <div class="col-3">
+       FIRMA DIRECTOR
+    </div>
+  </div>
+	<br>
 	<br>
 </div>
 </FONT>
 <p>&nbsp;</p>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script
 </body>
 </html>
 
@@ -217,3 +310,5 @@ echo "No tiene permiso para visualizar el reporte";
 
 ob_end_flush();
   ?>
+
+

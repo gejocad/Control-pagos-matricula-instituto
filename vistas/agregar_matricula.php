@@ -54,6 +54,30 @@ if ($_SESSION['matricula']==1) {
        <option value="110000">110.000 $</option>
      </select>
     </div>
+    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+      <label for="">Diploma bachiller(*):</label>
+      <input type="checkbox" id="diploma_bachiller" name="diploma_bachiller" value="1">
+    </div>
+    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+      <label for="">Certificado de 9°(*):</label>
+      <input type="checkbox" id="certificado_9" name="certificado_9" value="1">
+     </select>
+    </div>
+    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+      <label for="">Fotocopia de identificacion(*):</label>
+      <input type="checkbox" id="fotocopia_identificacion" name="fotocopia_identificacion" value="1">
+     </select>
+    </div>
+    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+      <label for="">Fotocopia de registro civil(*):</label>
+      <input type="checkbox" id="fotocopia_registro_civil" name="fotocopia_registro_civil" value="1">
+     </select>
+    </div>
+    <div class="form-group col-lg-3 col-md-3 col-xs-12 text-center">
+      <label for="">Carpeta(*):</label>
+      <input type="checkbox" id="carpeta" name="carpeta" value="1">
+     </select>
+    </div>
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
     </div>

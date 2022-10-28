@@ -38,6 +38,11 @@ function limpiar(){
 	$("#horario").val("");
 	$("#idhorario").val("");
 	$("#precio_mes").val("");
+	$("#diploma_bachiller").val("");
+	$("#certificado_9").val("");
+	$("#fotocopia_identificacion").val("");
+	$("#fotocopia_registro_civil").val("");
+	$("#carpeta").val("");
 
 }
 
@@ -132,6 +137,11 @@ function mostrar(idmatricula){
 			$("#jornada").selectpicker('refresh');
 			$("#precio_mes").val(data.precio_mes);
 			$("#precio_mes").selectpicker('refresh');
+			$("#diploma_bachiller").val(data.diploma_bachiller);
+			$("#certificado_9").val(data.certificado_9);
+			$("#fotocopia_identificacion").val(data.fotocopia_identificacion);
+			$("#fotocopia_registro_civil").val(data.fotocopia_registro_civil);
+			$("#carpeta").val(data.carpeta);
 			$("#idmatricula").val(data.idmatricula);
 
 			//ocultar y mostrar los botones
@@ -153,87 +163,7 @@ function anular(idmatricula){
 	})
 }
 
-//declaramos variables necesarias para trabajar con las compras y sus detalles
-var cont=0;
-var detalles=0;
 
 
-
-
-
-function agregarDetalle(idarticulo,articulo){
-	var cantidad=1;
-	var precio_compra=1;
-	var precio_venta=1;
-
-	if (idarticulo!="") {
-		var subtotal=cantidad*precio_compra;
-		var fila='<tr class="filas" id="fila'+cont+'">'+
-        '<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle('+cont+')">X</button></td>'+
-        '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
-        '<td><input type="number" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
-        '<td><input type="number" name="precio_compra[]" id="precio_compra[]" value="'+precio_compra+'"></td>'+
-        '<td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td>'+
-        '<td><span id="subtotal'+cont+'" name="subtotal">'+subtotal+'</span></td>'+
-        '<td><button type="button" onclick="modificarSubtotales()" class="btn btn-info"><i class="fa fa-refresh"></i></button></td>'+
-		'</tr>';
-		cont++;
-		detalles++;
-		$('#detalles').append(fila);
-		modificarSubtotales();
-
-	}else{
-		alert("error al ingresar el detalle, revisar las datos del articulo ");
-	}
-}
-
-function modificarSubtotales(){
-	var cant=document.getElementsByName("cantidad[]");
-	var prec=document.getElementsByName("precio_compra[]");
-	var sub=document.getElementsByName("subtotal");
-
-	for (var i = 0; i < cant.length; i++) {
-		var inpC=cant[i];
-		var inpP=prec[i];
-		var inpS=sub[i];
-
-		inpS.value=inpC.value*inpP.value;
-		document.getElementsByName("subtotal")[i].innerHTML=inpS.value;
-	}
-
-	calcularTotales();
-}
-
-function calcularTotales(){
-	var sub = document.getElementsByName("subtotal");
-	var total=0.0;
-
-	for (var i = 0; i < sub.length; i++) {
-		total += document.getElementsByName("subtotal")[i].value;
-	}
-	$("#total").html("$" + total);
-	$("#total_compra").val(total);
-	evaluar();
-}
-
-function evaluar(){
-
-	if (detalles>0) 
-	{
-		$("#btnGuardar").show();
-	}
-	else
-	{
-		$("#btnGuardar").hide();
-		cont=0;
-	}
-}
-
-function eliminarDetalle(indice){
-$("#fila"+indice).remove();
-calcularTotales();
-detalles=detalles-1;
-
-}
 
 init();

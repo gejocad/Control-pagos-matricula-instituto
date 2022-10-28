@@ -39,6 +39,7 @@ function limpiar(){
 	$("#sangre").val("");
 	$("#acudiente").val("");
 	$("#telefono_acudiente").val("");
+	$("#observacion").val("");
 	$("#imagen_estudiante").val("");
 	$("#imagen_documento1").val("");
 	$("#imagen_documento2").val("");
@@ -100,7 +101,7 @@ function listar(){
 //funcion para guardaryeditar
 function guardaryeditar(e){
      e.preventDefault();//no se activara la accion predeterminada 
-     $("#btnGuardar").prop("disabled",true);
+     //$("#btnGuardar").prop("disabled",true);
      var formData=new FormData($("#formulario")[0]);
 
      $.ajax({
@@ -145,6 +146,7 @@ function mostrar(idestudiante){
 			$("#sangre").val(data.sangre);
 			$("#acudiente").val(data.acudiente);
 			$("#telefono_acudiente").val(data.telefono_acudiente);	
+			$("#observacion").val(data.observacion);
 			$("#imagenmuestra1").show();
 			$("#imagenmuestra1").attr("src","../files/estudiantes/"+data.numero_documento+"_"+data.nombre+".jpg");
 			$("#imagenactual1").val(data.numero_documento+"_"+data.nombre+".jpg");

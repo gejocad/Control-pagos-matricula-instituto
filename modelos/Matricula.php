@@ -10,12 +10,12 @@ public function __construct(){
 }
 
 //metodo insertar registro
-public function insertar($estudiante,$programa,$horario,$precio_mes){
-	$sql="INSERT INTO matricula (idestudiante,idprograma,idhorario,precio_mes,condicion) VALUES ('$estudiante','$programa','$horario','$precio_mes','1')";
+public function insertar($estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta){
+	$sql="INSERT INTO matricula (idestudiante,idprograma,idhorario,precio_mes,diploma_bachiller,certificado_9,fotocopia_identificacion,fotocopia_registro_civil,carpeta,condicion) VALUES ('$estudiante','$programa','$horario','$precio_mes','$diploma_bachiller','$certificado_9','$fotocopia_identificacion','$fotocopia_registro_civil','$carpeta','1')";
 	return ejecutarConsulta($sql);
 }
-public function editar($idmatricula,$estudiante,$programa,$horario,$precio_mes){
-	$sql="UPDATE matricula SET idestudiante='$estudiante',idprograma='$programa',idhorario='$horario',precio_mes='$precio_mes',condicion='1'
+public function editar($idmatricula,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta){
+	$sql="UPDATE matricula SET idestudiante='$estudiante',idprograma='$programa',idhorario='$horario',precio_mes='$precio_mes',diploma_bachiller='$diploma_bachiller',certificado_9='$certificado_9',fotocopia_identificacion='$fotocopia_identificacion',fotocopia_registro_civil='$fotocopia_registro_civil',carpeta='$carpeta',condicion='1'
 	WHERE idmatricula='$idmatricula'";
 	return ejecutarConsulta($sql);
 }
@@ -50,6 +50,11 @@ public function listarMatricula(){
 
 public function listarMatriculaActiva(){
 	$sql="SELECT m.idmatricula,e.nombre,e.apellido,p.nombre as programa FROM matricula m INNER JOIN estudiante e ON m.idestudiante=e.idestudiante INNER JOIN programa p ON m.idprograma=p.idprograma WHERE m.condicion=1 ORDER BY m.idmatricula DESC";
+	return ejecutarConsulta($sql);
+}
+
+public function imprimirMatricula($idmatricula){
+	$sql="SELECT * FROM matricula WHERE idmatricula='$idmatricula'";
 	return ejecutarConsulta($sql);
 }
 
