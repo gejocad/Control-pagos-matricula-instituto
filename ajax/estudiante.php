@@ -36,9 +36,9 @@ switch ($_GET["op"]) {
 			$imagen_estudiante=round(microtime(true)).'.'. end($ext);
 			$imagen_documento1=round(microtime(true)).'.'. end($ext2);
 			$imagen_documento2=round(microtime(true)).'.'. end($ext3);
-			move_uploaded_file($_FILES["imagen_estudiante"]["tmp_name"], "../files/estudiantes/".$numero_documento."_".$nombre.".jpg");
-			move_uploaded_file($_FILES["imagen_documento1"]["tmp_name"], "../files/estudiantes/".$numero_documento."_documento_lado1.jpg");
-			move_uploaded_file($_FILES["imagen_documento2"]["tmp_name"], "../files/estudiantes/".$numero_documento."_documento_lado2.jpg");
+			move_uploaded_file($_FILES["imagen_estudiante"]["tmp_name"], "../files/estudiantes/".$tipo_documento.$numero_documento.".jpg");
+			move_uploaded_file($_FILES["imagen_documento1"]["tmp_name"], "../files/estudiantes/".$tipo_documento.$numero_documento."_documento_lado1.jpg");
+			move_uploaded_file($_FILES["imagen_documento2"]["tmp_name"], "../files/estudiantes/".$tipo_documento.$numero_documento."_documento_lado2.jpg");
 		}
 	}
 

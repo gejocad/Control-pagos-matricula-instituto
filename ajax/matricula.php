@@ -24,7 +24,7 @@ switch ($_GET["op"]) {
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}else{
         $rspta=$matricula->editar($idmatricula,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta);
-		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
+		echo $rspta ? "Datos actualizados correctamente" : "No se pudo registrar los datos";
 	}
 		break;
 	

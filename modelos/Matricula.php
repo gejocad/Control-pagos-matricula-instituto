@@ -54,7 +54,7 @@ public function listarMatriculaActiva(){
 }
 
 public function imprimirMatricula($idmatricula){
-	$sql="SELECT * FROM matricula WHERE idmatricula='$idmatricula'";
+	$sql="SELECT m.idmatricula,m.fecha_registro,e.nombre as nombre_estudiante,e.apellido as apellido_estudiante,e.fecha_nacimiento,l.municipio as municipio_nacimiento,l.departamento as departamento_nacimiento,e.tipo_documento,e.numero_documento,e.fecha_expedicion,u.municipio as municipio_expedicion,u.departamento as departamento_expedicion,e.direccion_residencia,e.telefono,e.correo,e.sangre,e.acudiente,e.telefono_acudiente,e.observacion,h.jornada,h.hora_entrada,h.hora_salida,p.nombre,m.diploma_bachiller,m.certificado_9,m.fotocopia_identificacion,m.fotocopia_registro_civil,m.carpeta  FROM matricula m INNER JOIN estudiante e ON m.idestudiante=e.idestudiante INNER JOIN lugar l ON e.lugar_nacimiento=l.idlugar INNER JOIN lugar u ON e.lugar_expedicion=u.idlugar INNER JOIN programa p ON m.idprograma=p.idprograma INNER JOIN horario h ON m.idhorario=h.idhorario WHERE m.idmatricula='$idmatricula'";
 	return ejecutarConsulta($sql);
 }
 

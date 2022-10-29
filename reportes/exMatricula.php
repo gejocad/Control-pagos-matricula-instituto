@@ -52,7 +52,7 @@ $reg=$rspta->fetch_object();
 	<div class="border" style="">
   <div class="">
   	<img class="fixed-top ml-5" src="logo.png" width="200" height="200" style="top:35px"/>
-  	<img class="position-fixed mr-5" src="foto.jpeg" width="200" height="200" style="top:30px; right: 0px;"/>
+  	<img class="position-fixed mr-5" src=<?php echo '"../files/estudiantes/'.$reg->tipo_documento,$reg->numero_documento.'.jpg"'; ?> width="200" height="220" style="top:30px; right: 0px;"/>
   	<h1 class="text-center mt-5"><?php echo $empresa; ?></h1>
   	<h6 class="text-center"><?php echo $eslogan; ?></h6>
   	<h6 class="text-center"><?php echo $subtitulo_1; ?></h6>
@@ -75,7 +75,7 @@ $reg=$rspta->fetch_object();
         <?php echo $reg->idmatricula; ?>       
     </div>
     <div class="col-4 border pt-2 pb-2">
-      	<?php echo $reg->fecha_registro; ?>  
+      	<?php echo date("d/m/Y", strtotime($reg->fecha_registro)); ?>  
     </div>
     <div class="col-4 border pt-2 pb-2">
       	<?php echo $ciudad; ?>
@@ -100,16 +100,16 @@ $reg=$rspta->fetch_object();
   </div>
   <div class="row justify-content-center">
     <div class="col-3 border pt-2 pb-2">
-        </br>    
+        <?php echo $reg->nombre_estudiante; ?>    
     </div>
     <div class="col-3 border pt-2 pb-2">
-      
+      	<?php echo $reg->apellido_estudiante; ?> 
     </div>
     <div class="col-3 border pt-2 pb-2">
-   
+   		<?php echo date("d/m/Y", strtotime($reg->fecha_nacimiento)); ?>  
     </div>
     <div class="col-3 border pt-2 pb-2">
-      
+      	<?php echo $reg->municipio_nacimiento.', '.$reg->departamento_nacimiento; ?> 
     </div>
   </div>
   <div class="row justify-content-center">
@@ -128,16 +128,16 @@ $reg=$rspta->fetch_object();
   </div>
   <div class="row justify-content-center">
     <div class="col-1 border pt-2 pb-2">
-     		</br>   
+     	<?php echo $reg->tipo_documento; ?>
     </div>
     <div class="col-3 border pt-2 pb-2">
-     
+     	<?php echo $reg->numero_documento; ?>
     </div>
     <div class="col-4 border pt-2 pb-2">
-     
+     	<?php echo date("d/m/Y", strtotime($reg->fecha_expedicion)); ?>  
     </div>
     <div class="col-4 border pt-2 pb-2">
-    
+    	<?php echo $reg->municipio_expedicion.', '.$reg->departamento_expedicion; ?> 
     </div>
   </div>
   <div class="row justify-content-center">
@@ -156,16 +156,16 @@ $reg=$rspta->fetch_object();
   </div>
   <div class="row justify-content-center">
     <div class="col-6 border pt-2 pb-2">
-      </br> 
+      	<?php echo $reg->direccion_residencia; ?> 
     </div>
     <div class="col-2 border pt-2 pb-2">
-     
+     	<?php echo $reg->telefono; ?>
     </div>
     <div class="col-3 border pt-2 pb-2">
-      
+      	<?php echo $reg->correo; ?>
     </div>
     <div class="col-1 border pt-2 pb-2">
-      
+      	<?php echo $reg->sangre; ?>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -181,11 +181,13 @@ $reg=$rspta->fetch_object();
   </div>
   <div class="row justify-content-center">
     <div class="col-3 border pt-2 pb-2">
-      </br> 
+      	<?php echo $reg->acudiente; ?> 
     </div>
     <div class="col-2 border pt-2 pb-2">
+    	<?php echo $reg->telefono_acudiente; ?>
     </div>
     <div class="col-7 border pt-2 pb-2">
+    	<?php echo $reg->observacion; ?>
     </div>
   </div>
   <div class="row justify-content-right">
@@ -201,12 +203,13 @@ $reg=$rspta->fetch_object();
   </div>
   <div class="row justify-content-right">
     <div class="col-2 border pt-2 pb-2">
-    	</br>
+    	<?php echo $reg->jornada; ?>
     </div>
     <div class="col-3 border pt-2 pb-2">
+    	<?php echo 'De '.date("g:i a",strtotime($reg->hora_entrada)).' a '.date("g:i a",strtotime($reg->hora_salida)); ?>
     </div>
     <div class="col-7 border pt-2 pb-2">
-      Técnico laboral por competencias en AUXILIAR CONTABLE Y FINANCIERO
+      <?php echo $reg->nombre; ?>
     </div>
   </div>
   </br> 
@@ -231,24 +234,46 @@ $reg=$rspta->fetch_object();
   </div>
   <div class="row justify-content-center">
     <div class="col-2 border pt-2 pb-2">
-    </br>
+
+    	<?php 
+    		if ($reg->diploma_bachiller == 1) {echo "Si";} 
+    		else {echo "No";}
+ 		?>
     </div>
     <div class="col-2 border pt-2 pb-2">
+    	<?php 
+    		if ($reg->certificado_9 == 1) {echo "Si";} 
+    		else {echo "No";}
+    	 ?>
     </div>
     <div class="col-3 border pt-2 pb-2">
+    	<?php 
+    		if ($reg->fotocopia_identificacion == 1) {echo "Si";} 
+    		else {echo "No";}
+    	 ?>
     </div>
     <div class="col-3 border pt-2 pb-2">
+    	<?php 
+    		if ($reg->fotocopia_registro_civil == 1) {echo "Si";} 
+    		else {echo "No";}
+    	 ?>
     </div>
     <div class="col-2 border pt-2 pb-2">
+    	<?php 
+    		if ($reg->carpeta == 1) {echo "Si";} 
+    		else {echo "No";}
+    	 ?>
     </div>
   </div>
   </br> 
   <h4 class="text-center">Documento de identidad</h4>
   </br> 
   <div class="row justify-content-around">
-    <div class="col-5 border pt-2 pb-2" style="height: 300px;">
+    <div class="col-5 border pt-2 pb-2" style="height: 320px;">
+    	<img class="" src=<?php echo '"../files/estudiantes/'.$reg->tipo_documento,$reg->numero_documento.'_documento_lado1.jpg"' ?> width="465" height="300" style="top:30px; "/>
     </div>
-    <div class="col-5 border pt-2 pb-2" style="height: 300px;">
+    <div class="col-5 border pt-2 pb-2" style="height: 320px;">
+    	<img class="" src=<?php echo '"../files/estudiantes/'.$reg->tipo_documento,$reg->numero_documento.'_documento_lado2.jpg"' ?> width="465" height="300" style="top:30px; "/>
   </div>
 </div>
 <div class="row justify-content-around text-center">

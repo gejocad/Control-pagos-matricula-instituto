@@ -65,7 +65,7 @@ switch ($_GET["op"]) {
 			$rspta = $horario->listarActivos();
 
 			while ($reg = $rspta->fetch_object()) {
-				echo '<option value='.$reg->idhorario.'>'.$reg->jornada.' de '.$reg->hora_entrada.' a '.$reg->hora_salida.'</option>';
+				echo '<option value='.$reg->idhorario.'>'.$reg->jornada.' de '.date("g:i a",strtotime($reg->hora_entrada)).' a '.date("g:i a",strtotime($reg->hora_salida)).'</option>';
 			}
 			break;
 

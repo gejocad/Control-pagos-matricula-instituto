@@ -30,7 +30,6 @@ function init(){
 //funcion limpiar
 function limpiar(){
 
-	$("#idmatricula").val("");
 	$("#estudiante").val("");
 	$("#idestudiante").val("");
 	$("#programa").val("");
@@ -43,6 +42,8 @@ function limpiar(){
 	$("#fotocopia_identificacion").val("");
 	$("#fotocopia_registro_civil").val("");
 	$("#carpeta").val("");
+	$("input[type=checkbox]").prop("checked", false);
+	$("#idmatricula").val("");
 
 }
 

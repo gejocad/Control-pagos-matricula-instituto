@@ -148,14 +148,14 @@ function mostrar(idestudiante){
 			$("#telefono_acudiente").val(data.telefono_acudiente);	
 			$("#observacion").val(data.observacion);
 			$("#imagenmuestra1").show();
-			$("#imagenmuestra1").attr("src","../files/estudiantes/"+data.numero_documento+"_"+data.nombre+".jpg");
-			$("#imagenactual1").val(data.numero_documento+"_"+data.nombre+".jpg");
+			$("#imagenmuestra1").attr("src","../files/estudiantes/"+data.tipo_documento+data.numero_documento+".jpg");
+			$("#imagenactual1").val(+data.tipo_documento+data.numero_documento+".jpg");
 			$("#imagenmuestra2").show();
-			$("#imagenmuestra2").attr("src","../files/estudiantes/"+data.numero_documento+"_documento_lado1.jpg");
-			$("#imagenactual2").val(data.numero_documento+"_documento_lado1.jpg");
+			$("#imagenmuestra2").attr("src","../files/estudiantes/"+data.tipo_documento+data.numero_documento+"_documento_lado1.jpg");
+			$("#imagenactual2").val(data.tipo_documento+data.numero_documento+"_documento_lado1.jpg");
 			$("#imagenmuestra3").show();
-			$("#imagenmuestra3").attr("src","../files/estudiantes/"+data.numero_documento+"_documento_lado2.jpg");
-			$("#imagenactual3").val(data.numero_documento+"_documento_lado2.jpg");
+			$("#imagenmuestra3").attr("src","../files/estudiantes/"+data.tipo_documento+data.numero_documento+"_documento_lado2.jpg");
+			$("#imagenactual3").val(data.tipo_documento+data.numero_documento+"_documento_lado2.jpg");
 			$("#idestudiante").val(data.idestudiante);
 			
 		})
