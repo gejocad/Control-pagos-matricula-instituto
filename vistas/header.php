@@ -118,7 +118,7 @@ if ($_SESSION['estudiante']==1) {
 }
         ?>
                <?php 
-if ($_SESSION['estudiante']==1) {
+if ($_SESSION['programa']==1) {
   echo ' <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i> <span>Programas</span>

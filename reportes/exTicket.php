@@ -30,9 +30,9 @@ require_once "../modelos/Pago.php";
 $logo="logo.png";
 $ext_logo="png";
 $empresa = "INSTITUTO LA FRONTERA";
-$documento = "NIT 102.237.7406-6";
-$direccion = "Cll. 17 Nro. 23-56, Santa teresita. Arauca-Arauca";
-$telefono = "+57 (315) 217 04 68";
+$documento = "NIT 13.489.371-4";
+$direccion = "Cr. 21 Nro. 26-57, Miramar, Arauca-Arauca";
+$telefono = "+57 (311) 521 02 20";
 $email = "direccion@institutolafrontera.co";
 
 $pago = new Pago();

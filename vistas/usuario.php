@@ -63,9 +63,9 @@ if ($_SESSION['acceso']==1) {
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Tipo Documento(*):</label>
      <select name="tipo_documento" id="tipo_documento" class="form-control select-picker" required>
-       <option value="DNI">DNI</option>
-       <option value="RUC">RUC</option>
-       <option value="CEDULA">CEDULA</option>
+       <option value="CC">CC</option>
+       <option value="CE">CE</option>
+       <option value="Pasaporte">Pasaporte</option>
      </select>
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
