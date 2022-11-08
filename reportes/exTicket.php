@@ -44,7 +44,7 @@ $reg=$rspta->fetch_object();
 
 $cuota= "Cuota 0";
 
-if ($reg->pagado == $reg->precio_mes && $reg->pagado < ($reg->precio_mes*2)) {
+if ($reg->pagado >= $reg->precio_mes && $reg->pagado < ($reg->precio_mes*2)) {
     $cuota= "Matricula";
 } elseif ($reg->pagado >= ($reg->precio_mes*2) && $reg->pagado < ($reg->precio_mes*3)) {
     $cuota= "Cuota 1";

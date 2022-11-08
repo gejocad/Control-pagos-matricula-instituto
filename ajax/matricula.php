@@ -52,7 +52,7 @@ switch ($_GET["op"]) {
             "3"=>$reg->jornada,
             "4"=>$reg->fecha_registro,
             "5"=>number_format($reg->pagado, 0, ',', '.'),
-            "6"=>number_format(($reg->semestre*6)*($reg->precio_mes), 0, ',', '.'),
+            "6"=>number_format((($reg->semestre*6)-($reg->semestre-2))*($reg->precio_mes), 0, ',', '.'),
             "7"=>($reg->condicion=='1')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
               );
 		}
