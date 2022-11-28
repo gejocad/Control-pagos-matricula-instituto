@@ -15,15 +15,16 @@ $certificado_9=isset($_POST["certificado_9"])? limpiarCadena($_POST["certificado
 $fotocopia_identificacion=isset($_POST["fotocopia_identificacion"])? limpiarCadena($_POST["fotocopia_identificacion"]):"";
 $fotocopia_registro_civil=isset($_POST["fotocopia_registro_civil"])? limpiarCadena($_POST["fotocopia_registro_civil"]):"";
 $carpeta=isset($_POST["carpeta"])? limpiarCadena($_POST["carpeta"]):"";
+$idusuario=$_SESSION["idusuario"];
 
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 	if (empty($idmatricula)) {
-		$rspta=$matricula->insertar($estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta);
+		$rspta=$matricula->insertar($idusuario,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}else{
-        $rspta=$matricula->editar($idmatricula,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta);
+        $rspta=$matricula->editar($idusuario,$idmatricula,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta);
 		echo $rspta ? "Datos actualizados correctamente" : "No se pudo registrar los datos";
 	}
 		break;
@@ -48,12 +49,13 @@ switch ($_GET["op"]) {
             "0"=>(($reg->condicion=='1')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idmatricula.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idmatricula.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idmatricula.')"><i class="fa fa-eye"></i></button>').
             '<a target="_blank" href="'.$url.$reg->idmatricula.'"> <button class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a>',
             "1"=>$reg->nombre,
-            "2"=>$reg->programa,
-            "3"=>$reg->jornada,
-            "4"=>$reg->fecha_registro,
-            "5"=>number_format($reg->pagado, 0, ',', '.'),
-            "6"=>number_format((($reg->semestre*6)-($reg->semestre-2))*($reg->precio_mes), 0, ',', '.'),
-            "7"=>($reg->condicion=='1')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
+            "2"=>$reg->usuario,
+            "3"=>$reg->programa,
+            "4"=>$reg->jornada,
+            "5"=>$reg->fecha_registro,
+            "6"=>number_format($reg->pagado, 0, ',', '.'),
+            "7"=>number_format((($reg->semestre*6)-($reg->semestre-2))*($reg->precio_mes), 0, ',', '.'),
+            "8"=>($reg->condicion=='1')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
               );
 		}
 		$results=array(

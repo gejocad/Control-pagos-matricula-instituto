@@ -10,8 +10,8 @@ public function __construct(){
 }
 
 //metodo insertar registro
-public function insertar($matricula,$idusuario,$tipo_pago,$total_pago,$observacion){
-	$sql="INSERT INTO pago (idmatricula,idusuario,tipo_pago,pago,observacion,estado) VALUES ('$matricula','$idusuario','$tipo_pago','$total_pago','$observacion','1')";
+public function insertar($idmatricula,$idusuario,$tipo_pago,$total_pago,$observacion){
+	$sql="INSERT INTO pago (idmatricula,idusuario,tipo_pago,pago,observacion,estado) VALUES ('$idmatricula','$idusuario','$tipo_pago','$total_pago','$observacion','1')";
 	return ejecutarConsulta($sql);
 }
 

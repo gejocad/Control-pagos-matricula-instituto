@@ -35,6 +35,7 @@ if ($_SESSION['estudiante']==1) {
       <th>Documento</th>
       <th>Telefono</th>
       <th>Correo</th>
+      <th>Usuario</th>
       <th>Estado</th>
     </thead>
     <tbody>
@@ -48,6 +49,7 @@ if ($_SESSION['estudiante']==1) {
       <th>Documento</th>
       <th>Telefono</th>
       <th>Correo</th>
+      <th>Usuario</th>
       <th>Estado</th>
     </tfoot>   
   </table>

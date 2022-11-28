@@ -29,6 +29,7 @@ if ($_SESSION['matricula']==1) {
     <thead>
       <th>Opciones</th>
       <th>Estudiante</th>
+      <th>Usuario</th>
       <th>Programa matriculado</th>
       <th>Jornada</th>
       <th>Fecha de matricula</th>
@@ -41,6 +42,7 @@ if ($_SESSION['matricula']==1) {
     <tfoot>
       <th>Opciones</th>
       <th>Estudiante</th>
+      <th>Usuario</th>
       <th>Programa matriculado</th>
       <th>Jornada</th>
       <th>Fecha de matricula</th>

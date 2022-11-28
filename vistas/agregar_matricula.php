@@ -25,11 +25,11 @@ if ($_SESSION['matricula']==1) {
 </div>
 <!--box-header-->
 <!--centro-->
-<div class="panel-body table-responsive" id="listadoregistros" style="height: 100vh;">
+<div class="panel-body" id="formularioregistros" style="height: 100vh;">
   <form action="" name="formulario" id="formulario" method="POST">
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Estudiante(*):</label>
-      <input class="form-control" type="hidden" name="idestudiante" id="idestudiante">
+      <input class="form-control" type="hidden" name="idmatricula" id="idmatricula">
       <select name="estudiante" id="estudiante" class="form-control selectpicker" data-live-search="true" required>
         
       </select>
@@ -56,30 +56,43 @@ if ($_SESSION['matricula']==1) {
     </div>
     <div class="form-group col-lg-3 col-md-3 col-xs-12">
       <label for="">Diploma bachiller(*):</label>
-      <input type="checkbox" id="diploma_bachiller" name="diploma_bachiller" value="1">
+      <select class="form-control select-picker" name="diploma_bachiller" id="diploma_bachiller" required>
+       <option value="1">Si</option>
+       <option value="0">No</option>
+     </select>
     </div>
     <div class="form-group col-lg-3 col-md-3 col-xs-12">
       <label for="">Certificado de 9°(*):</label>
-      <input type="checkbox" id="certificado_9" name="certificado_9" value="1">
+      <select class="form-control select-picker" name="certificado_9" id="certificado_9" required>
+       <option value="1">Si</option>
+       <option value="0">No</option>
      </select>
     </div>
     <div class="form-group col-lg-3 col-md-3 col-xs-12">
       <label for="">Fotocopia de identificacion(*):</label>
-      <input type="checkbox" id="fotocopia_identificacion" name="fotocopia_identificacion" value="1">
+      <select class="form-control select-picker" name="fotocopia_identificacion" id="fotocopia_identificacion" required>
+       <option value="1">Si</option>
+       <option value="0">No</option>
      </select>
     </div>
     <div class="form-group col-lg-3 col-md-3 col-xs-12">
       <label for="">Fotocopia de registro civil(*):</label>
-      <input type="checkbox" id="fotocopia_registro_civil" name="fotocopia_registro_civil" value="1">
+      <select class="form-control select-picker" name="fotocopia_registro_civil" id="fotocopia_registro_civil" required>
+       <option value="1">Si</option>
+       <option value="0">No</option>
      </select>
     </div>
-    <div class="form-group col-lg-3 col-md-3 col-xs-12 text-center">
+    <div class="form-group col-lg-3 col-md-3 col-xs-12">
       <label for="">Carpeta(*):</label>
-      <input type="checkbox" id="carpeta" name="carpeta" value="1">
+      <select class="form-control select-picker" name="carpeta" id="carpeta" required>
+       <option value="1">Si</option>
+       <option value="0">No</option>
      </select>
     </div>
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
+
+      <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
     </div>
   </form>
 </div>

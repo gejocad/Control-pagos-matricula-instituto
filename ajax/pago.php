@@ -6,7 +6,7 @@ if (strlen(session_id())<1)
 $pago=new Pago();
 
 $idpago=isset($_POST["idpago"])? limpiarCadena($_POST["idpago"]):"";
-$matricula=isset($_POST["matricula"])? limpiarCadena($_POST["matricula"]):"";
+$idmatricula=isset($_POST["idmatricula"])? limpiarCadena($_POST["idmatricula"]):"";
 $tipo_pago=isset($_POST["tipo_pago"])? limpiarCadena($_POST["tipo_pago"]):"";
 $total_pago=isset($_POST["total_pago"])? limpiarCadena($_POST["total_pago"]):"";
 $observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):"";
@@ -16,10 +16,10 @@ $idusuario=$_SESSION["idusuario"];
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 	if (empty($idpago)) {
-		$rspta=$pago->insertar($matricula,$idusuario,$tipo_pago,$total_pago,$observacion);
+		$rspta=$pago->insertar($idmatricula,$idusuario,$tipo_pago,$total_pago,$observacion);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}else{
-        $rspta=$pago->editar($idpago,$matricula,$idusuario,$tipo_pago,$total_pago,$observacion);
+        $rspta=$pago->editar($idpago,$idmatricula,$idusuario,$tipo_pago,$total_pago,$observacion);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}
 		break;

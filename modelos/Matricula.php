@@ -10,12 +10,12 @@ public function __construct(){
 }
 
 //metodo insertar registro
-public function insertar($estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta){
-	$sql="INSERT INTO matricula (idestudiante,idprograma,idhorario,precio_mes,diploma_bachiller,certificado_9,fotocopia_identificacion,fotocopia_registro_civil,carpeta,condicion) VALUES ('$estudiante','$programa','$horario','$precio_mes','$diploma_bachiller','$certificado_9','$fotocopia_identificacion','$fotocopia_registro_civil','$carpeta','1')";
+public function insertar($idusuario,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta){
+	$sql="INSERT INTO matricula (idusuario,idestudiante,idprograma,idhorario,precio_mes,diploma_bachiller,certificado_9,fotocopia_identificacion,fotocopia_registro_civil,carpeta,condicion) VALUES ('$idusuario','$estudiante','$programa','$horario','$precio_mes','$diploma_bachiller','$certificado_9','$fotocopia_identificacion','$fotocopia_registro_civil','$carpeta','1')";
 	return ejecutarConsulta($sql);
 }
-public function editar($idmatricula,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta){
-	$sql="UPDATE matricula SET idestudiante='$estudiante',idprograma='$programa',idhorario='$horario',precio_mes='$precio_mes',diploma_bachiller='$diploma_bachiller',certificado_9='$certificado_9',fotocopia_identificacion='$fotocopia_identificacion',fotocopia_registro_civil='$fotocopia_registro_civil',carpeta='$carpeta',condicion='1'
+public function editar($idusuario,$idmatricula,$estudiante,$programa,$horario,$precio_mes,$diploma_bachiller,$certificado_9,$fotocopia_identificacion,$fotocopia_registro_civil,$carpeta){
+	$sql="UPDATE matricula SET idusuario='$usuario',idestudiante='$estudiante',idprograma='$programa',idhorario='$horario',precio_mes='$precio_mes',diploma_bachiller='$diploma_bachiller',certificado_9='$certificado_9',fotocopia_identificacion='$fotocopia_identificacion',fotocopia_registro_civil='$fotocopia_registro_civil',carpeta='$carpeta',condicion='1'
 	WHERE idmatricula='$idmatricula'";
 	return ejecutarConsulta($sql);
 }
@@ -39,7 +39,7 @@ public function listarDetalle($idmatricula){
 
 //listar registros
 public function listar(){
-	$sql="SELECT m.idmatricula,e.nombre as nombre,p.nombre as programa,p.semestre,h.jornada as jornada, m.fecha_registro,m.precio_mes,m.pagado,m.condicion FROM matricula m INNER JOIN horario h ON m.idhorario=h.idhorario INNER JOIN programa p ON m.idprograma=p.idprograma INNER JOIN estudiante e ON m.idestudiante=e.idestudiante ORDER BY m.idmatricula DESC";
+	$sql="SELECT m.idmatricula,e.nombre as nombre,u.nombre as usuario,p.nombre as programa,p.semestre,h.jornada as jornada, m.fecha_registro,m.precio_mes,m.pagado,m.condicion FROM matricula m INNER JOIN usuario u ON m.idusuario=u.idusuario INNER JOIN horario h ON m.idhorario=h.idhorario INNER JOIN programa p ON m.idprograma=p.idprograma INNER JOIN estudiante e ON m.idestudiante=e.idestudiante ORDER BY m.idmatricula DESC";
 	return ejecutarConsulta($sql);
 }
 

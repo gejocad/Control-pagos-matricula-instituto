@@ -20,6 +20,7 @@ $sangre=isset($_POST["sangre"])? limpiarCadena($_POST["sangre"]):"";
 $acudiente=isset($_POST["acudiente"])? limpiarCadena($_POST["acudiente"]):"";
 $telefono_acudiente=isset($_POST["telefono_acudiente"])? limpiarCadena($_POST["telefono_acudiente"]):"";
 $observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):"";
+$idusuario=$_SESSION["idusuario"];
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
@@ -45,10 +46,10 @@ switch ($_GET["op"]) {
 
 	if (empty($idestudiante)) {
 
-		$rspta=$estudiante->insertar($nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente,$observacion);
+		$rspta=$estudiante->insertar($idusuario,$nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente,$observacion);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar los datos";
 	}else{
-         $rspta=$estudiante->editar($idestudiante,$nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente,$observacion);
+         $rspta=$estudiante->editar($idusuario,$idestudiante,$nombre,$apellido,$fecha_nacimiento,$lugar_nacimiento,$tipo_documento,$numero_documento,$fecha_expedicion,$lugar_expedicion,$direccion_residencia,$telefono,$correo,$sangre,$acudiente,$telefono_acudiente,$observacion);
 		echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos";
 	}
 		break;
@@ -82,7 +83,8 @@ switch ($_GET["op"]) {
 			"5"=>$reg->numero_documento,
             "6"=>$reg->telefono,
             "7"=>$reg->correo,
-			"8"=>($reg->condicion=='1')?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+            "8"=>$reg->usuario,
+			"9"=>($reg->condicion=='1')?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
 			
               );
 		}

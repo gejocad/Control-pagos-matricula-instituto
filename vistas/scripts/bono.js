@@ -11,8 +11,8 @@ function init(){
 
    //cargamos los items al select proveedor
    $.post("../ajax/matricula.php?op=selectMatricula", function(r){
-   	$("#matricula").html(r);
-   	$('#matricula').selectpicker('refresh');
+   	$("#idmatricula").html(r);
+   	$('#idmatricula').selectpicker('refresh');
    });
 
 
@@ -33,7 +33,6 @@ function init(){
 function limpiar(){
 
 	$("#idmatricula").val("");
-	$("#matricula").val("");
 	$("#tipo_bono").val("");
 	$("#total_bono").val("");
 	$("#observacion").val("");
@@ -125,9 +124,10 @@ function mostrar(idbono){
 			$("#idmatricula").selectpicker('refresh');
 			$("#tipo_bono").val(data.tipo_bono);
 			$("#tipo_bono").selectpicker('refresh');
-			$("#total_bono").val(data.	bono);
+			$("#total_bono").val(data.bono);
 			$("#total_bono").selectpicker('refresh');
 			$("#observacion").val(data.observacion);
+			$("#idbono").val(data.idbono);
 
 			//ocultar y mostrar los botones
 			$("#btnGuardar").hide();

@@ -56,8 +56,8 @@ if ($_SESSION['matricula']==1) {
   <form action="" name="formulario" id="formulario" method="POST">
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Matricula(*):</label>
-      <input class="form-control" type="hidden" name="idmatricula" id="idmatricula">
-      <select name="matricula" id="matricula" class="form-control selectpicker" data-live-search="true" required>
+      <input class="form-control" type="hidden" name="idpago" id="idpago">
+      <select name="idmatricula" id="idmatricula" class="form-control selectpicker" data-live-search="true" required>
         
       </select>
     </div>
