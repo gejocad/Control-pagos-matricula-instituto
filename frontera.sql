@@ -68,7 +68,7 @@ CREATE TRIGGER `tr_udpBonoAnulado` BEFORE UPDATE ON `bono` FOR EACH ROW BEGIN
         WHERE matricula.idmatricula = OLD.idmatricula;
     ELSEIF OLD.`tipo_bono`='semestral'
         THEN
-        UPDATE matricula SET pagado = pagado - (OLD.bono+(OLD.bono/9))
+        UPDATE matricula SET pagado = pagado - (precio_mes*6)
         WHERE matricula.idmatricula = OLD.idmatricula;
     ELSEIF NEW.`tipo_bono`='seguro'
         THEN
@@ -2952,7 +2952,7 @@ CREATE TRIGGER `tr_udpPagoAnulado` BEFORE UPDATE ON `pago` FOR EACH ROW BEGIN
         WHERE matricula.idmatricula = OLD.idmatricula;
     ELSEIF OLD.`tipo_pago`='semestral'
         THEN
-        UPDATE matricula SET pagado = pagado - (OLD.pago+(OLD.pago/9))
+        UPDATE matricula SET pagado = pagado - (precio_mes*6)
         WHERE matricula.idmatricula = OLD.idmatricula;
     ELSEIF NEW.`tipo_pago`='seguro'
         THEN

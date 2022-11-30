@@ -41,8 +41,7 @@ switch ($_GET["op"]) {
 		$url='../reportes/exTicket.php?id=';
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
-            "0"=>(($reg->estado=='1')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idbono.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idbono.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idbono.')"><i class="fa fa-eye"></i></button>').
-            '<a target="_blank" href="'.$url.$reg->idbono.'"> <button class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a>',
+            "0"=>(($reg->estado=='1')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idbono.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idbono.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idbono.')"><i class="fa fa-eye"></i></button>'),
             "1"=>$reg->idbono,
             "2"=>$reg->nombre.' '.$reg->apellido,
             "3"=>$reg->usuario,
