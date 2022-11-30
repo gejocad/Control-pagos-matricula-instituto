@@ -33,6 +33,7 @@ if ($_SESSION['matricula']==1) {
       <th>Programa matriculado</th>
       <th>Jornada</th>
       <th>Fecha de matricula</th>
+      <th>Seguro</th>
       <th>Pagado</th>
       <th>Total</th>
       <th>Estado</th>
@@ -46,6 +47,7 @@ if ($_SESSION['matricula']==1) {
       <th>Programa matriculado</th>
       <th>Jornada</th>
       <th>Fecha de matricula</th>
+      <th>Seguro</th>
       <th>Pagado</th>
       <th>Total</th>
       <th>Estado</th>
@@ -79,6 +81,7 @@ if ($_SESSION['matricula']==1) {
       <label for="">Precio matricula/mes(*):</label>
      <select class="form-control select-picker" name="precio_mes" id="precio_mes" required>
        <option value="110000">110.000 $</option>
+       <option value="120000">120.000 $</option>
      </select>
     </div>
     <div class="form-group col-lg-3 col-md-3 col-xs-12">

@@ -25,7 +25,7 @@ if ($_SESSION['matricula']==1) {
 </div>
 <!--box-header-->
 <!--centro-->
-<div class="panel-body" id="formularioregistros" style="height: 100vh;">
+<div class="panel-body" id="" style="height: 100vh;" style="display:block;">
   <form action="" name="formulario" id="formulario" method="POST">
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Estudiante(*):</label>
@@ -52,6 +52,7 @@ if ($_SESSION['matricula']==1) {
       <label for="">Precio matricula/mes(*):</label>
      <select class="form-control select-picker" name="precio_mes" id="precio_mes" required>
        <option value="110000">110.000 $</option>
+       <option value="120000">120.000 $</option>
      </select>
     </div>
     <div class="form-group col-lg-3 col-md-3 col-xs-12">

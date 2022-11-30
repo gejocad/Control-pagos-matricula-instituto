@@ -53,9 +53,10 @@ switch ($_GET["op"]) {
             "3"=>$reg->programa,
             "4"=>$reg->jornada,
             "5"=>$reg->fecha_registro,
-            "6"=>number_format($reg->pagado, 0, ',', '.'),
-            "7"=>number_format((($reg->semestre*6)-($reg->semestre-2))*($reg->precio_mes), 0, ',', '.'),
-            "8"=>($reg->condicion=='1')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
+            "6"=>($reg->seguro=='1')?'<span class="label bg-green">Pago</span>':'<span class="label bg-red">No pago</span>',
+            "7"=>number_format($reg->pagado, 0, ',', '.'),
+            "8"=>number_format((($reg->semestre*6)-($reg->semestre-2))*($reg->precio_mes), 0, ',', '.'),
+            "9"=>($reg->condicion=='1')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
               );
 		}
 		$results=array(

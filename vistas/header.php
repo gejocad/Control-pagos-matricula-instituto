@@ -182,7 +182,6 @@ if ($_SESSION['acceso']==1) {
             <li><a href="lugar.php"><i class="fa fa-circle-o"></i> Lugares</a></li>
             <li><a href="horario.php"><i class="fa fa-circle-o"></i> Horarios</a></li>
             <li><a href="bono.php"><i class="fa fa-circle-o"></i> Bonos/Obsequios</a></li>
-            <li><a href="seguro.php"><i class="fa fa-circle-o"></i> Seguro</a></li>
           </ul>
         </li>';
 }

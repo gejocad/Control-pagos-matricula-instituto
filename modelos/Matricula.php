@@ -39,7 +39,7 @@ public function listarDetalle($idmatricula){
 
 //listar registros
 public function listar(){
-	$sql="SELECT m.idmatricula,e.nombre as nombre,u.nombre as usuario,p.nombre as programa,p.semestre,h.jornada as jornada, m.fecha_registro,m.precio_mes,m.pagado,m.condicion FROM matricula m INNER JOIN usuario u ON m.idusuario=u.idusuario INNER JOIN horario h ON m.idhorario=h.idhorario INNER JOIN programa p ON m.idprograma=p.idprograma INNER JOIN estudiante e ON m.idestudiante=e.idestudiante ORDER BY m.idmatricula DESC";
+	$sql="SELECT m.idmatricula,e.nombre as nombre,u.nombre as usuario,p.nombre as programa,p.semestre,h.jornada as jornada, m.fecha_registro,m.precio_mes,m.seguro,m.pagado,m.condicion FROM matricula m INNER JOIN usuario u ON m.idusuario=u.idusuario INNER JOIN horario h ON m.idhorario=h.idhorario INNER JOIN programa p ON m.idprograma=p.idprograma INNER JOIN estudiante e ON m.idestudiante=e.idestudiante ORDER BY m.idmatricula DESC";
 	return ejecutarConsulta($sql);
 }
 

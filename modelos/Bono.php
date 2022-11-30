@@ -10,8 +10,8 @@ public function __construct(){
 }
 
 //metodo insertar registro
-public function insertar($matricula,$idusuario,$tipo_bono,$total_bono,$observacion){
-	$sql="INSERT INTO bono (idmatricula,idusuario,tipo_bono,bono,observacion,estado) VALUES ('$matricula','$idusuario','$tipo_bono','$total_bono','$observacion','1')";
+public function insertar($idmatricula,$idusuario,$tipo_bono,$total_bono,$observacion){
+	$sql="INSERT INTO bono (idmatricula,idusuario,tipo_bono,bono,observacion,estado) VALUES ('$idmatricula','$idusuario','$tipo_bono','$total_bono','$observacion','1')";
 	return ejecutarConsulta($sql);
 }
 

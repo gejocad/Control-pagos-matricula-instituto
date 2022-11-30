@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 //activamos almacenamiento en el buffer
 ob_start();
 if (strlen(session_id())<1) 

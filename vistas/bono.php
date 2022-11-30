@@ -66,6 +66,7 @@ if ($_SESSION['matricula']==1) {
      <select class="form-control select-picker" name="tipo_bono" id="tipo_pago" required>
        <option value="cuota" selected>Cuota / abono</option>
        <option value="semestral">Semestral</option>
+       <option value="seguro">Seguro</option>
      </select>
     </div>
     <div class="form-group col-lg-6 col-md-6 col-xs-12">
